@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ABS Remaja Hub</title>
+
+<style>
+:root{
+  --bg1:#111827;
+  --bg2:#4f46e5;
+  --bg3:#ec4899;
+  --card:#ffffff;
+  --text:#111827;
+  --muted:#6b7280;
+  --yellow:#facc15;
+  --cyan:#22d3ee;
+  --purple:#7c3aed;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(34,211,238,.35), transparent 32%),
+    radial-gradient(circle at top right, rgba(236,72,153,.32), transparent 30%),
+    linear-gradient(135deg,var(--bg1),var(--bg2));
+  color:white;
+  min-height:100vh;
+}
+
+.container{
+  width:min(1100px,92%);
+  margin:auto;
+}
+
+.hero{
+  padding:48px 0 28px;
+  text-align:center;
+}
+
+.badge{
+  display:inline-block;
+  padding:8px 15px;
+  border-radius:999px;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.25);
+  font-size:13px;
+  margin-bottom:16px;
+}
+
+.hero h1{
+  margin:0;
+  font-size:clamp(34px,7vw,66px);
+  line-height:1.02;
+  letter-spacing:-1.5px;
+}
+
+.hero h1 span{
+  color:var(--yellow);
+}
+
+.hero p{
+  max-width:720px;
+  margin:18px auto 0;
+  color:#e0e7ff;
+  font-size:17px;
+  line-height:1.7;
+}
+
+.cta{
+  margin-top:24px;
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-block;
+  padding:14px 20px;
+  border-radius:16px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.btn-main{
+  background:linear-gradient(135deg,var(--yellow),#fb923c);
+  color:#111827;
+}
+
+.btn-soft{
+  background:rgba(255,255,255,.13);
+  color:white;
+  border:1px solid rgba(255,255,255,.22);
+}
+
+.section-title{
+  margin:30px 0 16px;
+  text-align:center;
+}
+
+.section-title h2{
+  margin:0;
+  font-size:28px;
+}
+
+.section-title p{
+  margin:8px 0 0;
+  color:#dbeafe;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  padding-bottom:38px;
+}
+
+.card{
+  background:rgba(255,255,255,.96);
+  color:var(--text);
+  border-radius:24px;
+  padding:20px;
+  text-decoration:none;
+  box-shadow:0 18px 40px rgba(0,0,0,.18);
+  transition:.25s;
+  min-height:210px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 24px 55px rgba(0,0,0,.25);
+}
+
+.icon{
+  width:54px;
+  height:54px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  font-size:28px;
+  background:#f5f3ff;
+  margin-bottom:14px;
+}
+
+.card h3{
+  margin:0 0 8px;
+  font-size:19px;
+}
+
+.card p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.5;
+  font-size:14px;
+}
+
+.card small{
+  display:inline-block;
+  margin-top:16px;
+  color:var(--purple);
+  font-weight:bold;
+}
+
+.about{
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:26px;
+  padding:24px;
+  margin:0 0 34px;
+  text-align:center;
+}
+
+.about h2{
+  margin:0 0 10px;
+}
+
+.about p{
+  margin:0 auto;
+  max-width:780px;
+  color:#e0e7ff;
+  line-height:1.7;
+}
+
+.footer{
+  text-align:center;
+  color:#c7d2fe;
+  font-size:13px;
+  padding:22px 0 34px;
+}
+
+.footer a{
+  color:#fde68a;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+@media(max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:560px){
+  .hero{padding-top:36px}
+  .grid{grid-template-columns:1fr}
+  .card{min-height:auto}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <div class="badge">✨ Digital Companion Book</div>
+    <h1>
+      Aku Bukan<br>
+      <span>Sembarang Remaja</span>
+    </h1>
+    <p>
+      Kenali dirimu, pahami perasaanmu, jaga pertemananmu, dan bangun keberanian untuk memilih masa depan yang lebih baik.
+    </p>
+
+    <div class="cta">
+      <a class="btn btn-main" href="#kuis">Mulai Eksplorasi</a>
+      <a class="btn btn-soft" href="https://s.id/bukutije" target="_blank">Baca Buku</a>
+    </div>
+  </section>
+
+  <section id="kuis">
+    <div class="section-title">
+      <h2>8 Kuis Reflektif Remaja</h2>
+      <p>Bukan untuk menghakimi. Ini ruang kecil untuk mengenal diri.</p>
+    </div>
+
+    <div class="grid">
+
+      <a class="card" href="quiz/pemimpin/">
+        <div>
+          <div class="icon">🧭</div>
+          <h3>Pemimpin atau Pengikut?</h3>
+          <p>Kenali gaya kamu saat berada dalam kelompok.</p>
+        </div>
+        <small>Mulai Tes →</small>
+      </a>
+
+      <a class="card" href="#">
+        <div>
+          <div class="icon">🎯</div>
+          <h3>Apakah Kamu Tahu Mimpimu?</h3>
+          <p>Cek apakah kamu sudah punya arah dan tujuan.</p>
+        </div>
+        <small>Segera Hadir →</small>
+      </a>
+
+      <a class="card" href="#">
+        <div>
+          <div class="icon">💗</div>
+          <h3>Hubunganmu Sehat atau Nggak?</h3>
+          <p>Pahami relasi yang mendukung atau melemahkanmu.</p>
+        </div>
+        <small>Segera Hadir →</small>
+      </a>
+
+      <a class="card" href="#">
+        <div>
+          <div class="icon">🌙</div>
+          <h3>Apakah Aku Sering Overthinking?</h3>
+          <p>Kenali pola pikiran yang bikin hati terasa penuh.</p>
+        </div>
+        <small>Segera Hadir →</small>
+      </a>
+
+      <a class="card" href="#">
+        <div>
+          <div class="icon">📵</div>
+          <h3>Butuh Digital Detox?</h3>
+          <p>Cek hubunganmu dengan layar dan media sosial.</p>
+        </div>
+        <small>Segera Hadir →</small>
+      </a>
+
+      <a class="card" href="#">
+        <div>
+          <div class="icon">🛡️</div>
+          <h3>Kamu Punya Daya Tolak?</h3>
+          <p>Latih keberanian berkata tidak pada tekanan negatif.</p>
+        </div>
+        <small>Segera Hadir →</small>
+      </a>
+
+      <a class="card" href="#">
+        <div>
+          <div class="icon">🌸</div>
+          <h3>Sudah Sayang Diri?</h3>
+          <p>Self-love checklist untuk merawat diri dengan sehat.</p>
+        </div>
+        <small>Segera Hadir →</small>
+      </a>
+
+      <a class="card" href="#">
+        <div>
+          <div class="icon">🤝</div>
+          <h3>Pertemananmu Sehat?</h3>
+          <p>Cek apakah lingkaranmu membawa energi baik.</p>
+        </div>
+        <small>Segera Hadir →</small>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="about">
+    <h2>ABS Remaja Hub</h2>
+    <p>
+      Ruang digital interaktif dari buku <b>Aku Bukan Sembarang Remaja</b>.
+      Dibuat untuk membantu remaja mengenal diri, menguatkan karakter, menjaga relasi, dan berani memilih jalan hidup yang lebih sehat.
+    </p>
+  </section>
+
+  <div class="footer">
+    © ABS Remaja Hub · Tri Tjahyono · 
+    <a href="https://s.id/bukutije" target="_blank">s.id/bukutije</a>
+  </div>
+
+</div>
+
+</body>
+</html>
