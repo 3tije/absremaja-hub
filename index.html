@@ -411,6 +411,44 @@ body{
   font-weight:800;
 }
 
+
+.card.done{
+  outline:3px solid rgba(250,204,21,.95);
+}
+
+.card.done::after{
+  content:"✅ SELESAI";
+  position:absolute;
+  top:14px;
+  right:14px;
+  background:#16a34a;
+  color:white;
+  font-size:11px;
+  font-weight:800;
+  padding:7px 10px;
+  border-radius:999px;
+  z-index:2;
+}
+
+.card.done .illustration{
+  background:linear-gradient(135deg,#dcfce7,#fef3c7);
+}
+
+.resetBtn{
+  margin-top:14px;
+  background:#ef4444;
+  color:white;
+  border:none;
+  border-radius:14px;
+  padding:11px 14px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.resetBtn:hover{
+  background:#dc2626;
+}
+
 @media(max-width:900px){
   .hero{
     grid-template-columns:1fr;
@@ -534,6 +572,7 @@ body{
     <span id="progressText">0 dari 8 misi</span>
   </div>
   <div class="bar"><div class="fill" id="progressFill"></div></div>
+  <button class="resetBtn" onclick="resetProgress()">Reset Progress</button>
 </section>
 
 <section class="section" id="misi">
@@ -545,7 +584,7 @@ body{
 
   <div class="grid">
 
-    <a class="card" href="quiz/pemimpin/">
+    <a class="card" data-id="pemimpin" href="quiz/pemimpin/">
       <div>
         <div class="illustration">🧭</div>
         <div class="misi">MISI 1</div>
@@ -555,7 +594,7 @@ body{
       <div class="meta"><span>⏱ 2 menit</span><span class="start">Mulai →</span></div>
     </a>
 
-    <a class="card" href="quiz/mimpi/">
+    <a class="card" data-id="mimpi" href="quiz/mimpi/">
       <div>
         <div class="illustration">🎯</div>
         <div class="misi">MISI 2</div>
@@ -565,7 +604,7 @@ body{
       <div class="meta"><span>⏱ 1 menit</span><span class="start">Mulai →</span></div>
     </a>
 
-    <a class="card" href="quiz/hubungan/">
+    <a class="card" data-id="hubungan" href="quiz/hubungan/">
       <div>
         <div class="illustration">💗</div>
         <div class="misi">MISI 3</div>
@@ -575,7 +614,7 @@ body{
       <div class="meta"><span>⏱ 1 menit</span><span class="start">Mulai →</span></div>
     </a>
 
-    <a class="card" href="quiz/overthinking/">
+    <a class="card" data-id="overthinking" href="quiz/overthinking/">
       <div>
         <div class="illustration">🌙</div>
         <div class="misi">MISI 4</div>
@@ -585,7 +624,7 @@ body{
       <div class="meta"><span>⏱ 1 menit</span><span class="start">Mulai →</span></div>
     </a>
 
-    <a class="card" href="quiz/detox/">
+    <a class="card" data-id="detox" href="quiz/detox/">
       <div>
         <div class="illustration">📵</div>
         <div class="misi">MISI 5</div>
@@ -595,7 +634,7 @@ body{
       <div class="meta"><span>⏱ 1 menit</span><span class="start">Mulai →</span></div>
     </a>
 
-    <a class="card" href="quiz/dayatolak/">
+    <a class="card" data-id="dayatolak" href="quiz/dayatolak/">
       <div>
         <div class="illustration">🛡️</div>
         <div class="misi">MISI 6</div>
@@ -605,7 +644,7 @@ body{
       <div class="meta"><span>⏱ 1 menit</span><span class="start">Mulai →</span></div>
     </a>
 
-    <a class="card" href="quiz/selflove/">
+    <a class="card" data-id="selflove" href="quiz/selflove/">
       <div>
         <div class="illustration">🌸</div>
         <div class="misi">MISI 7</div>
@@ -615,7 +654,7 @@ body{
       <div class="meta"><span>⏱ 1 menit</span><span class="start">Mulai →</span></div>
     </a>
 
-    <a class="card" href="quiz/pertemanan/">
+    <a class="card" data-id="pertemanan" href="quiz/pertemanan/">
       <div>
         <div class="illustration">🤝</div>
         <div class="misi">MISI 8</div>
@@ -679,13 +718,37 @@ const quotes = [
 document.getElementById("quoteBox").innerHTML =
   "💬 " + quotes[Math.floor(Math.random() * quotes.length)];
 
-const done = JSON.parse(localStorage.getItem("abs_done") || "[]");
-const total = 8;
-const count = done.length;
-const percent = Math.round((count / total) * 100);
+function updateProgress(){
+  const done = JSON.parse(localStorage.getItem("abs_done") || "[]");
+  const total = 8;
+  const count = done.length;
+  const percent = Math.round((count / total) * 100);
 
-document.getElementById("progressText").innerText = `${count} dari ${total} misi`;
-document.getElementById("progressFill").style.width = percent + "%";
+  document.getElementById("progressText").innerText = `${count} dari ${total} misi`;
+  document.getElementById("progressFill").style.width = percent + "%";
+
+  document.querySelectorAll(".card[data-id]").forEach(card => {
+    const id = card.getAttribute("data-id");
+    const status = card.querySelector(".start");
+
+    if(done.includes(id)){
+      card.classList.add("done");
+      if(status) status.innerText = "✅ Selesai";
+    } else {
+      card.classList.remove("done");
+      if(status) status.innerText = "Mulai →";
+    }
+  });
+}
+
+function resetProgress(){
+  if(confirm("Reset semua progress perjalananmu?")){
+    localStorage.removeItem("abs_done");
+    updateProgress();
+  }
+}
+
+updateProgress();
 </script>
 
 </body>
