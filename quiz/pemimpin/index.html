@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tes Kepribadian Mini (Lengkap) : Kamu Tipe Pemimpin atau Pengikut?</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+        color: #4a148c;
+        font-size: 28px;
+    }
+    .description {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 16px;
+        color: #555;
+    }
+    .quiz-container {
+        max-width: 700px;
+        background: #fff;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .question {
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+    label {
+        display: inline-block;
+        margin: 8px 15px 8px 0;
+        font-size: 18px;
+    }
+    button {
+        display: block;
+        width: 100%;
+        padding: 14px;
+        font-size: 18px;
+        color: #fff;
+        background-color: #6a1b9a;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+    button:hover {
+        background-color: #4a0072;
+    }
+    .result {
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        color: #333;
+    }
+</style>
+</head>
+<body>
+<h1>🧪 Tes Kepribadian Mini: Kamu Tipe Pemimpin atau Pengikut?</h1>
+<p class="description">
+📌 Tujuan:<br>
+Bukan buat nge-judge. Tapi bantu kamu kenal gaya kamu dalam kelompok: apakah kamu cenderung memimpin, mendukung, atau kombinasi keduanya.
+</p>
+<div class="quiz-container">
+<form id="quizForm">
+    <div class="question">1. Aku suka ambil inisiatif waktu kelompok belum ada yang mulai<br>
+        <label><input type="radio" name="q1" value="leader"> YA</label>
+        <label><input type="radio" name="q1" value="none"> TIDAK</label>
+    </div>
+    <div class="question">2. Aku lebih nyaman ikut arahan daripada ngatur orang<br>
+        <label><input type="radio" name="q2" value="follower"> YA</label>
+        <label><input type="radio" name="q2" value="none"> TIDAK</label>
+    </div>
+    <div class="question">3. Aku percaya diri ngomong di depan orang banyak<br>
+        <label><input type="radio" name="q3" value="leader"> YA</label>
+        <label><input type="radio" name="q3" value="none"> TIDAK</label>
+    </div>
+    <div class="question">4. Aku lebih suka bekerja di belakang layar<br>
+        <label><input type="radio" name="q4" value="follower"> YA</label>
+        <label><input type="radio" name="q4" value="none"> TIDAK</label>
+    </div>
+    <div class="question">5. Aku gampang ngajak teman buat gabung ide atau project<br>
+        <label><input type="radio" name="q5" value="leader"> YA</label>
+        <label><input type="radio" name="q5" value="none"> TIDAK</label>
+    </div>
+    <div class="question">6. Aku sering ragu ambil keputusan<br>
+        <label><input type="radio" name="q6" value="follower"> YA</label>
+        <label><input type="radio" name="q6" value="none"> TIDAK</label>
+    </div>
+    <div class="question">7. Teman-teman sering minta pendapatku sebelum ngambil keputusan<br>
+        <label><input type="radio" name="q7" value="leader"> YA</label>
+        <label><input type="radio" name="q7" value="none"> TIDAK</label>
+    </div>
+    <div class="question">8. Aku nggak keberatan kalau bukan aku yang jadi pusat perhatian<br>
+        <label><input type="radio" name="q8" value="follower"> YA</label>
+        <label><input type="radio" name="q8" value="none"> TIDAK</label>
+    </div>
+    <div class="question">9. Aku bisa ngasih semangat ke kelompok waktu mulai lelah<br>
+        <label><input type="radio" name="q9" value="leader"> YA</label>
+        <label><input type="radio" name="q9" value="none"> TIDAK</label>
+    </div>
+    <div class="question">10. Aku sering mikir, “yang penting kerjaan beres, bukan siapa yang mimpin”<br>
+        <label><input type="radio" name="q10" value="follower"> YA</label>
+        <label><input type="radio" name="q10" value="none"> TIDAK</label>
+    </div>
+
+    <button type="button" onclick="calculateResult()">Lihat Hasil ✅</button>
+</form>
+<div class="result" id="result"></div>
+</div>
+
+<script>
+function calculateResult() {
+    let leaderCount = 0;
+    let followerCount = 0;
+    for (let i = 1; i <= 10; i++) {
+        let selected = document.querySelector(`input[name=q${i}]:checked`);
+        if (selected) {
+            if (selected.value === 'leader') leaderCount++;
+            else if (selected.value === 'follower') followerCount++;
+        }
+    }
+    let message = "";
+    if (leaderCount >= 5 && leaderCount > followerCount) {
+        message = "✅ dominan Pemimpin: Kamu punya naluri inisiatif & percaya diri. Asah kemampuan mendengarkan dan empati agar tidak jadi bossy.";
+    } else if (followerCount >= 5 && followerCount > leaderCount) {
+        message = "✅ dominan Pengikut: Kamu adalah pendukung tangguh. Bukan berarti lemah. Tanpa kamu, pemimpin nggak bisa jalan sendiri. Kamu bikin sistem jadi stabil.";
+    } else {
+        message = "✅ Seimbang: Kamu fleksibel! Bisa maju saat dibutuhkan, tapi juga bisa mundur dan mendukung. Ini skill yang langka dan dibutuhkan tim mana pun.";
+    }
+    document.getElementById('result').innerHTML = `Hasil Tes:<br><b>Pemimpin:</b> ${leaderCount} | <b>Pengikut:</b> ${followerCount}<br>${message}`;
+}
+</script>
+</body>
+</html>
