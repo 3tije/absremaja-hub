@@ -1,144 +1,295 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tes Kepribadian Mini (Lengkap) : Kamu Tipe Pemimpin atau Pengikut?</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pemimpin atau Pengikut? - ABS Remaja Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-        color: #333;
-        margin: 0;
-        padding: 20px;
-    }
-    h1 {
-        text-align: center;
-        color: #4a148c;
-        font-size: 28px;
-    }
-    .description {
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 16px;
-        color: #555;
-    }
-    .quiz-container {
-        max-width: 700px;
-        background: #fff;
-        margin: 20px auto;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .question {
-        margin-bottom: 15px;
-        font-size: 18px;
-    }
-    label {
-        display: inline-block;
-        margin: 8px 15px 8px 0;
-        font-size: 18px;
-    }
-    button {
-        display: block;
-        width: 100%;
-        padding: 14px;
-        font-size: 18px;
-        color: #fff;
-        background-color: #6a1b9a;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        margin-top: 20px;
-    }
-    button:hover {
-        background-color: #4a0072;
-    }
-    .result {
-        margin-top: 20px;
-        font-size: 20px;
-        font-weight: bold;
-        text-align: center;
-        color: #333;
-    }
+:root{
+  --bg1:#0f172a; --bg2:#4f46e5; --bg3:#7c3aed;
+  --yellow:#facc15; --white:#fff; --text:#111827; --muted:#64748b;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Plus Jakarta Sans',Arial,sans-serif;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
+  color:white;
+  min-height:100vh;
+}
+.wrap{width:min(820px,92%);margin:auto;padding:34px 0}
+.top{text-align:center;margin-bottom:18px}
+.badge{display:inline-block;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.22);font-size:13px}
+h1{font-size:clamp(30px,6vw,48px);line-height:1.08;margin:16px 0 10px}
+h1 span{color:var(--yellow)}
+.desc{color:#e0e7ff;line-height:1.7;max-width:720px;margin:auto}
+.card{
+  background:white;color:var(--text);border-radius:28px;padding:24px;
+  box-shadow:0 25px 70px rgba(0,0,0,.28);margin-top:24px;
+}
+.intro{text-align:center}
+.intro h2{margin:8px 0 10px;font-size:28px}
+.intro p{color:#475569;line-height:1.8}
+.progressTop{display:flex;justify-content:space-between;font-weight:800;margin-bottom:10px;color:#334155}
+.bar{height:12px;background:#e5e7eb;border-radius:999px;overflow:hidden;margin-bottom:22px}
+.fill{height:100%;width:0%;background:linear-gradient(90deg,#2563eb,#facc15);transition:.3s}
+.questionBox{background:#f8fafc;border-radius:22px;padding:22px;margin-bottom:18px}
+.qnum{color:#7c3aed;font-weight:800;font-size:14px;margin-bottom:8px}
+.qtext{font-size:22px;font-weight:800;line-height:1.45}
+.options{display:grid;gap:12px}
+.option{
+  border:2px solid #e5e7eb;border-radius:18px;padding:16px;cursor:pointer;
+  display:flex;gap:10px;align-items:center;font-weight:700;transition:.2s;
+}
+.option:hover,.option.selected{border-color:#7c3aed;background:#f5f3ff}
+.option input{transform:scale(1.2)}
+.actions{display:flex;gap:12px;margin-top:20px}
+button,.btn{
+  border:none;border-radius:16px;padding:14px 16px;font-size:15px;font-weight:800;
+  cursor:pointer;text-decoration:none;text-align:center;display:inline-block;
+}
+.btn-primary{background:linear-gradient(135deg,#facc15,#fb923c);color:#111827;flex:1}
+.btn-purple{background:linear-gradient(135deg,#7c3aed,#2563eb);color:white;flex:1}
+.btn-soft{background:#e5e7eb;color:#334155;flex:1}
+button:disabled{opacity:.45;cursor:not-allowed}
+.result{text-align:center;display:none}
+.resultIcon{font-size:58px}
+.result h2{font-size:30px;margin:8px 0;color:#7c3aed}
+.score{background:#f5f3ff;display:inline-block;padding:10px 16px;border-radius:999px;font-weight:800;margin:10px 0 16px}
+.resultText{color:#334155;line-height:1.8;font-size:17px}
+.note{background:#fffbeb;border-left:5px solid #facc15;text-align:left;padding:16px;border-radius:16px;margin-top:18px;color:#374151;line-height:1.7}
+.footer{text-align:center;color:#c7d2fe;font-size:13px;margin-top:18px}
+.footer a{color:#fde68a;text-decoration:none;font-weight:800}
+@media(max-width:560px){.actions{flex-direction:column}.card{padding:20px}.qtext{font-size:20px}}
 </style>
 </head>
+
 <body>
-<h1>🧪 Tes Kepribadian Mini: Kamu Tipe Pemimpin atau Pengikut?</h1>
-<p class="description">
-📌 Tujuan:<br>
-Bukan buat nge-judge. Tapi bantu kamu kenal gaya kamu dalam kelompok: apakah kamu cenderung memimpin, mendukung, atau kombinasi keduanya.
-</p>
-<div class="quiz-container">
-<form id="quizForm">
-    <div class="question">1. Aku suka ambil inisiatif waktu kelompok belum ada yang mulai<br>
-        <label><input type="radio" name="q1" value="leader"> YA</label>
-        <label><input type="radio" name="q1" value="none"> TIDAK</label>
-    </div>
-    <div class="question">2. Aku lebih nyaman ikut arahan daripada ngatur orang<br>
-        <label><input type="radio" name="q2" value="follower"> YA</label>
-        <label><input type="radio" name="q2" value="none"> TIDAK</label>
-    </div>
-    <div class="question">3. Aku percaya diri ngomong di depan orang banyak<br>
-        <label><input type="radio" name="q3" value="leader"> YA</label>
-        <label><input type="radio" name="q3" value="none"> TIDAK</label>
-    </div>
-    <div class="question">4. Aku lebih suka bekerja di belakang layar<br>
-        <label><input type="radio" name="q4" value="follower"> YA</label>
-        <label><input type="radio" name="q4" value="none"> TIDAK</label>
-    </div>
-    <div class="question">5. Aku gampang ngajak teman buat gabung ide atau project<br>
-        <label><input type="radio" name="q5" value="leader"> YA</label>
-        <label><input type="radio" name="q5" value="none"> TIDAK</label>
-    </div>
-    <div class="question">6. Aku sering ragu ambil keputusan<br>
-        <label><input type="radio" name="q6" value="follower"> YA</label>
-        <label><input type="radio" name="q6" value="none"> TIDAK</label>
-    </div>
-    <div class="question">7. Teman-teman sering minta pendapatku sebelum ngambil keputusan<br>
-        <label><input type="radio" name="q7" value="leader"> YA</label>
-        <label><input type="radio" name="q7" value="none"> TIDAK</label>
-    </div>
-    <div class="question">8. Aku nggak keberatan kalau bukan aku yang jadi pusat perhatian<br>
-        <label><input type="radio" name="q8" value="follower"> YA</label>
-        <label><input type="radio" name="q8" value="none"> TIDAK</label>
-    </div>
-    <div class="question">9. Aku bisa ngasih semangat ke kelompok waktu mulai lelah<br>
-        <label><input type="radio" name="q9" value="leader"> YA</label>
-        <label><input type="radio" name="q9" value="none"> TIDAK</label>
-    </div>
-    <div class="question">10. Aku sering mikir, “yang penting kerjaan beres, bukan siapa yang mimpin”<br>
-        <label><input type="radio" name="q10" value="follower"> YA</label>
-        <label><input type="radio" name="q10" value="none"> TIDAK</label>
+<div class="wrap">
+
+  <div class="top">
+    <div class="badge">ABS Remaja Hub · Misi 1</div>
+    <h1>Pemimpin atau <span>Pengikut?</span></h1>
+    <p class="desc">
+      Nggak semua pemimpin harus paling depan. Nggak semua pengikut itu lemah.
+      Yuk kenali gaya kamu saat berada dalam kelompok.
+    </p>
+  </div>
+
+  <div class="card">
+
+    <div id="introArea" class="intro">
+      <h2>🧭 Sebelum mulai...</h2>
+      <p>
+        Kadang kamu perlu maju dan memimpin. Kadang kamu juga perlu mendukung orang lain.
+        Keduanya sama-sama penting. Tes ini bukan buat nge-judge, tapi buat bantu kamu lebih paham dirimu.
+      </p>
+      <div class="actions">
+        <a class="btn btn-soft" href="../../">🏠 Beranda</a>
+        <button class="btn-primary" onclick="startQuiz()">Mulai Tes →</button>
+      </div>
     </div>
 
-    <button type="button" onclick="calculateResult()">Lihat Hasil ✅</button>
-</form>
-<div class="result" id="result"></div>
+    <div id="quizArea" style="display:none">
+      <div class="progressTop">
+        <span id="progressText">Pertanyaan 1 dari 10</span>
+        <span id="percentText">10%</span>
+      </div>
+      <div class="bar"><div class="fill" id="progressFill"></div></div>
+
+      <div class="questionBox">
+        <div class="qnum" id="qnum">Pertanyaan 1</div>
+        <div class="qtext" id="qtext"></div>
+      </div>
+
+      <div class="options" id="options"></div>
+
+      <div class="actions">
+        <button class="btn-soft" onclick="prevQuestion()">← Kembali</button>
+        <button class="btn-purple" id="nextBtn" onclick="nextQuestion()" disabled>Lanjut →</button>
+      </div>
+    </div>
+
+    <div id="resultArea" class="result">
+      <div class="resultIcon" id="resultIcon">✨</div>
+      <h2 id="resultTitle"></h2>
+      <div class="score" id="scoreText"></div>
+      <div class="resultText" id="resultMessage"></div>
+
+      <div class="note">
+        <b>Catatan refleksi:</b><br>
+        Yang penting bukan selalu jadi pemimpin atau selalu jadi pendukung.
+        Yang penting kamu tahu kapan harus maju, kapan harus mendengar, dan kapan harus bekerja sama.
+      </div>
+
+      <div class="actions">
+        <a class="btn btn-soft" href="../../">🏠 Beranda</a>
+        <a class="btn btn-purple" href="../mimpi/">➡️ Misi Berikutnya</a>
+      </div>
+
+      <div class="actions">
+        <button class="btn-soft" onclick="restartQuiz()">🔄 Ulangi</button>
+        <button class="btn-primary" onclick="shareResult()">📤 Bagikan</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Dari buku <b>Aku Bukan Sembarang Remaja</b> ·
+    <a href="https://s.id/bukutije" target="_blank">Baca Buku</a>
+  </div>
+
 </div>
 
 <script>
-function calculateResult() {
-    let leaderCount = 0;
-    let followerCount = 0;
-    for (let i = 1; i <= 10; i++) {
-        let selected = document.querySelector(`input[name=q${i}]:checked`);
-        if (selected) {
-            if (selected.value === 'leader') leaderCount++;
-            else if (selected.value === 'follower') followerCount++;
-        }
-    }
-    let message = "";
-    if (leaderCount >= 5 && leaderCount > followerCount) {
-        message = "✅ dominan Pemimpin: Kamu punya naluri inisiatif & percaya diri. Asah kemampuan mendengarkan dan empati agar tidak jadi bossy.";
-    } else if (followerCount >= 5 && followerCount > leaderCount) {
-        message = "✅ dominan Pengikut: Kamu adalah pendukung tangguh. Bukan berarti lemah. Tanpa kamu, pemimpin nggak bisa jalan sendiri. Kamu bikin sistem jadi stabil.";
-    } else {
-        message = "✅ Seimbang: Kamu fleksibel! Bisa maju saat dibutuhkan, tapi juga bisa mundur dan mendukung. Ini skill yang langka dan dibutuhkan tim mana pun.";
-    }
-    document.getElementById('result').innerHTML = `Hasil Tes:<br><b>Pemimpin:</b> ${leaderCount} | <b>Pengikut:</b> ${followerCount}<br>${message}`;
+const questions = [
+  { text:"Aku suka ambil inisiatif waktu kelompok belum ada yang mulai", type:"leader" },
+  { text:"Aku lebih nyaman ikut arahan daripada ngatur orang", type:"follower" },
+  { text:"Aku percaya diri ngomong di depan orang banyak", type:"leader" },
+  { text:"Aku lebih suka bekerja di belakang layar", type:"follower" },
+  { text:"Aku gampang ngajak teman buat gabung ide atau project", type:"leader" },
+  { text:"Aku sering ragu ambil keputusan", type:"follower" },
+  { text:"Teman-teman sering minta pendapatku sebelum ngambil keputusan", type:"leader" },
+  { text:"Aku nggak keberatan kalau bukan aku yang jadi pusat perhatian", type:"follower" },
+  { text:"Aku bisa ngasih semangat ke kelompok waktu mulai lelah", type:"leader" },
+  { text:"Aku sering mikir, “yang penting kerjaan beres, bukan siapa yang mimpin”", type:"follower" }
+];
+
+let current = 0;
+let answers = Array(questions.length).fill(null);
+let finalTitle = "";
+
+function startQuiz(){
+  document.getElementById("introArea").style.display = "none";
+  document.getElementById("quizArea").style.display = "block";
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = questions[current];
+  const percent = Math.round(((current + 1) / questions.length) * 100);
+
+  document.getElementById("progressText").innerText = `Pertanyaan ${current + 1} dari ${questions.length}`;
+  document.getElementById("percentText").innerText = percent + "%";
+  document.getElementById("progressFill").style.width = percent + "%";
+  document.getElementById("qnum").innerText = "Pertanyaan " + (current + 1);
+  document.getElementById("qtext").innerText = q.text;
+
+  const optionsBox = document.getElementById("options");
+  optionsBox.innerHTML = "";
+
+  [
+    { label:"YA", value:q.type },
+    { label:"TIDAK", value:"none" }
+  ].forEach(opt => {
+    const selected = answers[current] === opt.value ? "selected" : "";
+    optionsBox.innerHTML += `
+      <label class="option ${selected}">
+        <input type="radio" name="answer" value="${opt.value}" ${answers[current] === opt.value ? "checked" : ""}>
+        <span>${opt.label}</span>
+      </label>`;
+  });
+
+  document.querySelectorAll('input[name="answer"]').forEach(input => {
+    input.addEventListener("change", function(){
+      answers[current] = this.value;
+      renderQuestion();
+    });
+  });
+
+  document.getElementById("nextBtn").innerText =
+    current === questions.length - 1 ? "Lihat Hasil ✅" : "Lanjut →";
+
+  document.getElementById("nextBtn").disabled = answers[current] === null;
+}
+
+function nextQuestion(){
+  if(answers[current] === null) return;
+  if(current < questions.length - 1){
+    current++;
+    renderQuestion();
+  } else {
+    calculateResult();
+  }
+}
+
+function prevQuestion(){
+  if(current > 0){
+    current--;
+    renderQuestion();
+  }
+}
+
+function calculateResult(){
+  let leaderCount = 0;
+  let followerCount = 0;
+
+  answers.forEach(ans => {
+    if(ans === "leader") leaderCount++;
+    if(ans === "follower") followerCount++;
+  });
+
+  let icon = "";
+  let message = "";
+
+  if(leaderCount >= 5 && leaderCount > followerCount){
+    icon = "🔥";
+    finalTitle = "Dominan Pemimpin";
+    message = "Kamu punya naluri inisiatif, percaya diri, dan berani mengambil peran. Kekuatanmu adalah menggerakkan orang lain. Tantangannya: tetap mau mendengar, tidak memaksakan ide, dan menjaga empati.";
+  } else if(followerCount >= 5 && followerCount > leaderCount){
+    icon = "🤝";
+    finalTitle = "Dominan Pendukung";
+    message = "Kamu adalah pendukung yang tangguh. Kamu mungkin tidak selalu ingin tampil di depan, tapi kamu membuat kelompok tetap stabil. Kekuatanmu ada pada kesetiaan, kerja sama, dan kemampuan menjaga ritme tim.";
+  } else {
+    icon = "⚖️";
+    finalTitle = "Seimbang dan Fleksibel";
+    message = "Kamu bisa maju saat dibutuhkan, tetapi juga bisa mendukung saat orang lain memimpin. Ini kemampuan yang berharga karena kamu mampu membaca situasi dan menyesuaikan peran.";
+  }
+
+  saveProgress("pemimpin");
+
+  document.getElementById("quizArea").style.display = "none";
+  document.getElementById("resultArea").style.display = "block";
+  document.getElementById("resultIcon").innerText = icon;
+  document.getElementById("resultTitle").innerText = finalTitle;
+  document.getElementById("scoreText").innerHTML = `Pemimpin: ${leaderCount} | Pendukung: ${followerCount}`;
+  document.getElementById("resultMessage").innerText = message;
+}
+
+function saveProgress(id){
+  const done = JSON.parse(localStorage.getItem("abs_done") || "[]");
+  if(!done.includes(id)){
+    done.push(id);
+    localStorage.setItem("abs_done", JSON.stringify(done));
+  }
+}
+
+function restartQuiz(){
+  current = 0;
+  answers = Array(questions.length).fill(null);
+  document.getElementById("introArea").style.display = "block";
+  document.getElementById("quizArea").style.display = "none";
+  document.getElementById("resultArea").style.display = "none";
+}
+
+function shareResult(){
+  const text = `Hasil tesku di ABS Remaja Hub: ${finalTitle}. Yuk kenali dirimu juga!`;
+
+  if(navigator.share){
+    navigator.share({
+      title:"ABS Remaja Hub",
+      text:text,
+      url:window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(text + " " + window.location.href);
+    alert("Hasil berhasil disalin.");
+  }
 }
 </script>
+
 </body>
 </html>
