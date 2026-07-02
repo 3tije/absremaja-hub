@@ -1,335 +1,189 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ABS Remaja Hub</title>
-
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg1:#111827;
-  --bg2:#4f46e5;
-  --bg3:#ec4899;
-  --card:#ffffff;
-  --text:#111827;
-  --muted:#6b7280;
-  --yellow:#facc15;
-  --cyan:#22d3ee;
-  --purple:#7c3aed;
+  --navy:#0f172a; --blue:#2563eb; --purple:#7c3aed; --pink:#ec4899;
+  --yellow:#facc15; --cyan:#22d3ee; --white:#fff; --soft:#f8fafc;
+  --text:#111827; --muted:#64748b;
 }
-
 *{box-sizing:border-box}
-
+html{scroll-behavior:smooth}
 body{
-  margin:0;
-  font-family:Arial, Helvetica, sans-serif;
+  margin:0; font-family:'Plus Jakarta Sans',Arial,sans-serif; color:var(--white);
   background:
-    radial-gradient(circle at top left, rgba(34,211,238,.35), transparent 32%),
-    radial-gradient(circle at top right, rgba(236,72,153,.32), transparent 30%),
-    linear-gradient(135deg,var(--bg1),var(--bg2));
-  color:white;
-  min-height:100vh;
+  radial-gradient(circle at 15% 10%,rgba(34,211,238,.35),transparent 26%),
+  radial-gradient(circle at 85% 10%,rgba(236,72,153,.32),transparent 28%),
+  linear-gradient(135deg,#0f172a,#312e81,#6d28d9);
 }
-
-.container{
-  width:min(1100px,92%);
-  margin:auto;
-}
-
-.hero{
-  padding:48px 0 28px;
-  text-align:center;
-}
-
-.badge{
-  display:inline-block;
-  padding:8px 15px;
-  border-radius:999px;
-  background:rgba(255,255,255,.15);
-  border:1px solid rgba(255,255,255,.25);
-  font-size:13px;
-  margin-bottom:16px;
-}
-
-.hero h1{
-  margin:0;
-  font-size:clamp(34px,7vw,66px);
-  line-height:1.02;
-  letter-spacing:-1.5px;
-}
-
-.hero h1 span{
-  color:var(--yellow);
-}
-
-.hero p{
-  max-width:720px;
-  margin:18px auto 0;
-  color:#e0e7ff;
-  font-size:17px;
-  line-height:1.7;
-}
-
-.cta{
-  margin-top:24px;
-  display:flex;
-  gap:12px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.btn{
-  display:inline-block;
-  padding:14px 20px;
-  border-radius:16px;
-  text-decoration:none;
-  font-weight:bold;
-}
-
-.btn-main{
-  background:linear-gradient(135deg,var(--yellow),#fb923c);
-  color:#111827;
-}
-
-.btn-soft{
-  background:rgba(255,255,255,.13);
-  color:white;
-  border:1px solid rgba(255,255,255,.22);
-}
-
-.section-title{
-  margin:30px 0 16px;
-  text-align:center;
-}
-
-.section-title h2{
-  margin:0;
-  font-size:28px;
-}
-
-.section-title p{
-  margin:8px 0 0;
-  color:#dbeafe;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
-  padding-bottom:38px;
-}
-
+.wrap{width:min(1120px,92%);margin:auto}
+.hero{text-align:center;padding:54px 0 34px}
+.badge{display:inline-block;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);font-size:13px}
+.hero h1{font-size:clamp(38px,7vw,72px);line-height:1.02;margin:18px 0 12px;font-weight:800;letter-spacing:-2px}
+.hero h1 span{color:var(--yellow)}
+.hero p{max-width:720px;margin:auto;color:#e0e7ff;line-height:1.7;font-size:17px}
+.cta{margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{padding:14px 20px;border-radius:16px;text-decoration:none;font-weight:800;display:inline-block}
+.btn-main{background:linear-gradient(135deg,var(--yellow),#fb923c);color:#111827}
+.btn-soft{background:rgba(255,255,255,.13);color:white;border:1px solid rgba(255,255,255,.23)}
+.panel{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:28px;padding:26px;margin:22px 0;box-shadow:0 18px 40px rgba(0,0,0,.15)}
+.welcome{text-align:center}
+.welcome h2,.section h2{margin:0 0 10px;font-size:28px}
+.welcome p{margin:auto;max-width:780px;color:#e0e7ff;line-height:1.8}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0}
+.stat{background:rgba(255,255,255,.92);color:var(--text);border-radius:22px;padding:18px;text-align:center}
+.stat b{display:block;font-size:26px}.stat span{color:var(--muted);font-size:13px}
+.progressBox{background:#fff;color:var(--text);border-radius:24px;padding:22px;margin:22px 0}
+.progressTop{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px;font-weight:800}
+.bar{height:12px;background:#e5e7eb;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0%;background:linear-gradient(90deg,var(--blue),var(--yellow));transition:.4s}
+.section{text-align:center;margin-top:34px}
+.section p{color:#dbeafe;margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:20px 0 34px}
 .card{
-  background:rgba(255,255,255,.96);
-  color:var(--text);
-  border-radius:24px;
-  padding:20px;
-  text-decoration:none;
-  box-shadow:0 18px 40px rgba(0,0,0,.18);
-  transition:.25s;
-  min-height:210px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+  background:#fff;color:var(--text);border-radius:26px;padding:20px;text-decoration:none;min-height:240px;
+  display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 18px 42px rgba(0,0,0,.2);transition:.25s;position:relative;overflow:hidden
 }
-
-.card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 24px 55px rgba(0,0,0,.25);
-}
-
-.icon{
-  width:54px;
-  height:54px;
-  border-radius:18px;
-  display:grid;
-  place-items:center;
-  font-size:28px;
-  background:#f5f3ff;
-  margin-bottom:14px;
-}
-
-.card h3{
-  margin:0 0 8px;
-  font-size:19px;
-}
-
-.card p{
-  margin:0;
-  color:var(--muted);
-  line-height:1.5;
-  font-size:14px;
-}
-
-.card small{
-  display:inline-block;
-  margin-top:16px;
-  color:var(--purple);
-  font-weight:bold;
-}
-
-.about{
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:26px;
-  padding:24px;
-  margin:0 0 34px;
-  text-align:center;
-}
-
-.about h2{
-  margin:0 0 10px;
-}
-
-.about p{
-  margin:0 auto;
-  max-width:780px;
-  color:#e0e7ff;
-  line-height:1.7;
-}
-
-.footer{
-  text-align:center;
-  color:#c7d2fe;
-  font-size:13px;
-  padding:22px 0 34px;
-}
-
-.footer a{
-  color:#fde68a;
-  text-decoration:none;
-  font-weight:bold;
-}
-
-@media(max-width:900px){
-  .grid{grid-template-columns:repeat(2,1fr)}
-}
-
-@media(max-width:560px){
-  .hero{padding-top:36px}
-  .grid{grid-template-columns:1fr}
-  .card{min-height:auto}
-}
+.card:before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--blue),var(--pink),var(--yellow))}
+.card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 25px 60px rgba(0,0,0,.28)}
+.icon{width:58px;height:58px;border-radius:20px;background:#f5f3ff;display:grid;place-items:center;font-size:30px;margin-bottom:12px}
+.misi{color:var(--purple);font-size:12px;font-weight:800;letter-spacing:.8px}
+.card h3{margin:7px 0 8px;font-size:19px}.card p{margin:0;color:var(--muted);line-height:1.5;font-size:14px}
+.meta{display:flex;justify-content:space-between;align-items:center;margin-top:16px;font-size:13px;color:var(--muted)}
+.start{color:var(--purple);font-weight:800}
+.book{display:grid;grid-template-columns:1fr 1.4fr;gap:22px;align-items:center;text-align:left}
+.bookCover{background:linear-gradient(135deg,#fde68a,#c084fc);border-radius:26px;padding:28px;text-align:center;color:#111827}
+.bookCover .big{font-size:54px}
+.book h2{font-size:30px;margin:0 0 10px}.book p{color:#e0e7ff;line-height:1.8}
+.quote{text-align:center;font-size:20px;line-height:1.7;color:#fff}
+.footer{text-align:center;color:#c7d2fe;font-size:13px;padding:28px 0 38px}
+.footer a{color:#fde68a;text-decoration:none;font-weight:800}
+@media(max-width:900px){.grid,.stats{grid-template-columns:repeat(2,1fr)}.book{grid-template-columns:1fr;text-align:center}}
+@media(max-width:560px){.hero{padding-top:38px}.grid,.stats{grid-template-columns:1fr}.panel{padding:21px}.card{min-height:auto}}
 </style>
 </head>
-
 <body>
+<div class="wrap">
 
-<div class="container">
-
-  <section class="hero">
-    <div class="badge">✨ Digital Companion Book</div>
-    <h1>
-      Aku Bukan<br>
-      <span>Sembarang Remaja</span>
-    </h1>
-    <p>
-      Kenali dirimu, pahami perasaanmu, jaga pertemananmu, dan bangun keberanian untuk memilih masa depan yang lebih baik.
-    </p>
-
-    <div class="cta">
-      <a class="btn btn-main" href="#kuis">Mulai Eksplorasi</a>
-      <a class="btn btn-soft" href="https://s.id/bukutije" target="_blank">Baca Buku</a>
-    </div>
-  </section>
-
-  <section id="kuis">
-    <div class="section-title">
-      <h2>8 Kuis Reflektif Remaja</h2>
-      <p>Bukan untuk menghakimi. Ini ruang kecil untuk mengenal diri.</p>
-    </div>
-
-    <div class="grid">
-
-      <a class="card" href="quiz/pemimpin/">
-        <div>
-          <div class="icon">🧭</div>
-          <h3>Pemimpin atau Pengikut?</h3>
-          <p>Kenali gaya kamu saat berada dalam kelompok.</p>
-        </div>
-        <small>Mulai Tes →</small>
-      </a>
-
-      <a class="card" href="#">
-        <div>
-          <div class="icon">🎯</div>
-          <h3>Apakah Kamu Tahu Mimpimu?</h3>
-          <p>Cek apakah kamu sudah punya arah dan tujuan.</p>
-        </div>
-        <small>Segera Hadir →</small>
-      </a>
-
-      <a class="card" href="#">
-        <div>
-          <div class="icon">💗</div>
-          <h3>Hubunganmu Sehat atau Nggak?</h3>
-          <p>Pahami relasi yang mendukung atau melemahkanmu.</p>
-        </div>
-        <small>Segera Hadir →</small>
-      </a>
-
-      <a class="card" href="#">
-        <div>
-          <div class="icon">🌙</div>
-          <h3>Apakah Aku Sering Overthinking?</h3>
-          <p>Kenali pola pikiran yang bikin hati terasa penuh.</p>
-        </div>
-        <small>Segera Hadir →</small>
-      </a>
-
-      <a class="card" href="#">
-        <div>
-          <div class="icon">📵</div>
-          <h3>Butuh Digital Detox?</h3>
-          <p>Cek hubunganmu dengan layar dan media sosial.</p>
-        </div>
-        <small>Segera Hadir →</small>
-      </a>
-
-      <a class="card" href="#">
-        <div>
-          <div class="icon">🛡️</div>
-          <h3>Kamu Punya Daya Tolak?</h3>
-          <p>Latih keberanian berkata tidak pada tekanan negatif.</p>
-        </div>
-        <small>Segera Hadir →</small>
-      </a>
-
-      <a class="card" href="#">
-        <div>
-          <div class="icon">🌸</div>
-          <h3>Sudah Sayang Diri?</h3>
-          <p>Self-love checklist untuk merawat diri dengan sehat.</p>
-        </div>
-        <small>Segera Hadir →</small>
-      </a>
-
-      <a class="card" href="#">
-        <div>
-          <div class="icon">🤝</div>
-          <h3>Pertemananmu Sehat?</h3>
-          <p>Cek apakah lingkaranmu membawa energi baik.</p>
-        </div>
-        <small>Segera Hadir →</small>
-      </a>
-
-    </div>
-  </section>
-
-  <section class="about">
-    <h2>ABS Remaja Hub</h2>
-    <p>
-      Ruang digital interaktif dari buku <b>Aku Bukan Sembarang Remaja</b>.
-      Dibuat untuk membantu remaja mengenal diri, menguatkan karakter, menjaga relasi, dan berani memilih jalan hidup yang lebih sehat.
-    </p>
-  </section>
-
-  <div class="footer">
-    © ABS Remaja Hub · Tri Tjahyono · 
-    <a href="https://s.id/bukutije" target="_blank">s.id/bukutije</a>
+<section class="hero">
+  <div class="badge">✨ Digital Companion Book</div>
+  <h1>Aku Bukan<br><span>Sembarang Remaja</span></h1>
+  <p>Ruang refleksi digital untuk mengenal diri, memahami perasaan, menjaga pertemanan, dan membangun keberanian memilih masa depan yang lebih baik.</p>
+  <div class="cta">
+    <a class="btn btn-main" href="#misi">🚀 Mulai Perjalanan</a>
+    <a class="btn btn-soft" href="https://s.id/bukutije" target="_blank">📖 Baca Buku</a>
   </div>
+</section>
+
+<section class="panel welcome">
+  <h2>Halo Sahabat Remaja 👋</h2>
+  <p>Di sini tidak ada jawaban benar atau salah. Tidak ada nilai 100. Yang ada adalah kesempatan untuk mengenali dirimu, memahami kekuatanmu, dan belajar menjadi versi terbaik dari dirimu sendiri.</p>
+</section>
+
+<div class="stats">
+  <div class="stat"><b>📚 1</b><span>Buku Inspiratif</span></div>
+  <div class="stat"><b>🧠 8</b><span>Kuis Reflektif</span></div>
+  <div class="stat"><b>❓ 80</b><span>Pertanyaan Ringan</span></div>
+  <div class="stat"><b>🌟 1</b><span>Tujuan Baik</span></div>
+</div>
+
+<section class="progressBox">
+  <div class="progressTop">
+    <span>📈 Progress Perjalananmu</span>
+    <span id="progressText">0 dari 8 misi</span>
+  </div>
+  <div class="bar"><div class="fill" id="progressFill"></div></div>
+</section>
+
+<section class="section" id="misi">
+  <h2>🎯 Pilih Misi Refleksimu Hari Ini</h2>
+  <p>Mulai dari satu misi kecil. Pelan-pelan kamu akan makin mengenal dirimu.</p>
+
+  <div class="grid">
+    <a class="card" href="quiz/pemimpin/">
+      <div><div class="icon">🧭</div><div class="misi">MISI 1</div><h3>Pemimpin atau Pengikut?</h3><p>Kenali gaya kamu saat berada dalam kelompok.</p></div>
+      <div class="meta"><span>⏱ 2 menit</span><span class="start">Mulai →</span></div>
+    </a>
+
+    <a class="card" href="#">
+      <div><div class="icon">🎯</div><div class="misi">MISI 2</div><h3>Apakah Kamu Tahu Mimpimu?</h3><p>Cek apakah kamu sudah punya arah dan tujuan.</p></div>
+      <div class="meta"><span>⏱ 3 menit</span><span class="start">Segera →</span></div>
+    </a>
+
+    <a class="card" href="#">
+      <div><div class="icon">💗</div><div class="misi">MISI 3</div><h3>Hubunganmu Sehat?</h3><p>Pahami relasi yang mendukung atau melemahkanmu.</p></div>
+      <div class="meta"><span>⏱ 3 menit</span><span class="start">Segera →</span></div>
+    </a>
+
+    <a class="card" href="#">
+      <div><div class="icon">🌙</div><div class="misi">MISI 4</div><h3>Sering Overthinking?</h3><p>Kenali pola pikiran yang membuat hati terasa penuh.</p></div>
+      <div class="meta"><span>⏱ 2 menit</span><span class="start">Segera →</span></div>
+    </a>
+
+    <a class="card" href="#">
+      <div><div class="icon">📵</div><div class="misi">MISI 5</div><h3>Butuh Digital Detox?</h3><p>Cek hubunganmu dengan layar dan media sosial.</p></div>
+      <div class="meta"><span>⏱ 2 menit</span><span class="start">Segera →</span></div>
+    </a>
+
+    <a class="card" href="#">
+      <div><div class="icon">🛡️</div><div class="misi">MISI 6</div><h3>Kamu Punya Daya Tolak?</h3><p>Latih keberanian berkata tidak pada tekanan negatif.</p></div>
+      <div class="meta"><span>⏱ 3 menit</span><span class="start">Segera →</span></div>
+    </a>
+
+    <a class="card" href="#">
+      <div><div class="icon">🌸</div><div class="misi">MISI 7</div><h3>Sudah Sayang Diri?</h3><p>Checklist kecil untuk merawat diri dengan sehat.</p></div>
+      <div class="meta"><span>⏱ 2 menit</span><span class="start">Segera →</span></div>
+    </a>
+
+    <a class="card" href="#">
+      <div><div class="icon">🤝</div><div class="misi">MISI 8</div><h3>Pertemananmu Sehat?</h3><p>Cek apakah lingkaranmu membawa energi baik.</p></div>
+      <div class="meta"><span>⏱ 3 menit</span><span class="start">Segera →</span></div>
+    </a>
+  </div>
+</section>
+
+<section class="panel book">
+  <div class="bookCover">
+    <div class="big">📘</div>
+    <h3>Aku Bukan<br>Sembarang Remaja</h3>
+  </div>
+  <div>
+    <h2>📖 Tentang Buku</h2>
+    <p>Buku ini adalah teman perjalanan remaja untuk mengenali diri, mengelola emosi, membangun mimpi, menjaga relasi, dan berani berkata tidak pada hal-hal yang merusak masa depan.</p>
+    <a class="btn btn-main" href="https://s.id/bukutije" target="_blank">Baca Selengkapnya</a>
+  </div>
+</section>
+
+<section class="panel quote" id="quoteBox"></section>
+
+<div class="footer">
+  <b>ABS Remaja Hub</b><br>
+  Digital Companion · Aku Bukan Sembarang Remaja<br>
+  Tri Tjahyono · <a href="https://s.id/bukutije" target="_blank">s.id/bukutije</a>
+</div>
 
 </div>
+
+<script>
+const quotes=[
+  "“Menjadi hebat bukan berarti menjadi seperti orang lain, tetapi berani menjadi dirimu sendiri.”",
+  "“Kamu tidak harus sempurna untuk mulai berubah menjadi lebih baik.”",
+  "“Masa depan tidak dibangun dari ikut-ikutan, tetapi dari keberanian memilih arah.”",
+  "“Pertemanan yang sehat membuatmu bertumbuh, bukan kehilangan dirimu.”"
+];
+document.getElementById("quoteBox").innerHTML="💬 "+quotes[Math.floor(Math.random()*quotes.length)];
+
+const done = JSON.parse(localStorage.getItem("abs_done") || "[]");
+const total = 8;
+const count = done.length;
+const percent = Math.round((count/total)*100);
+document.getElementById("progressText").innerText = `${count} dari ${total} misi`;
+document.getElementById("progressFill").style.width = percent + "%";
+</script>
 
 </body>
 </html>
